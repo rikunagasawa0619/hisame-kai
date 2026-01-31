@@ -274,7 +274,9 @@ export default function HandballPage() {
                 <h3 className="text-2xl font-bold text-white mb-2">Instagram</h3>
                 <p className="text-gray-400 mb-6">練習風景や大会の様子を投稿中</p>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/nagasawariku/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-pink-500/50 transition-all"
                 >
                   フォローする
@@ -286,7 +288,9 @@ export default function HandballPage() {
                 <h3 className="text-2xl font-bold text-white mb-2">X (Twitter)</h3>
                 <p className="text-gray-400 mb-6">試合速報や練習予定をリアルタイム配信</p>
                 <a
-                  href="#"
+                  href="https://x.com/rio_hisame"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
                 >
                   フォローする

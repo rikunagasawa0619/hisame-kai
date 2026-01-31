@@ -27,18 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
-      <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-        <link rel="stylesheet" href="/css/style.css" />
-        <link rel="stylesheet" href="/css/inview.css" />
-      </head>
-      <body className={`${notoSansJP.variable} antialiased`}>
+    <html lang="ja" className="scroll-smooth">
+      <body className={`${notoSansJP.variable} antialiased bg-black`}>
         <Header />
         {children}
         <Footer />
-
-        <script src="/js/main.js" defer></script>
       </body>
     </html>
   );
