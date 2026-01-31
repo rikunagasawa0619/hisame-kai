@@ -10,7 +10,7 @@ import {
   FaUsers,
   FaEnvelope,
   FaArrowRight,
-  FaAngleDoubleUp,
+  FaAnglesUp,
 } from 'react-icons/fa6'
 import Loading from './components/Loading'
 
@@ -389,7 +389,7 @@ export default function Home() {
         className="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white text-2xl hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 z-50"
         aria-label="ページトップへ戻る"
       >
-        <FaAngleDoubleUp />
+        <FaAnglesUp />
       </motion.a>
     </div>
   )
