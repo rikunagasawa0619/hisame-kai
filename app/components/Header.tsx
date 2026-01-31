@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { FaBars, FaTimes } from 'react-icons/fa6'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -9,10 +10,12 @@ export default function Header() {
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden'
-      document.body.style.height = '100%'
     } else {
       document.body.style.overflow = ''
-      document.body.style.height = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
     }
   }, [menuOpen])
 
@@ -24,49 +27,110 @@ export default function Header() {
     setMenuOpen(false)
   }
 
+  const navLinks = [
+    { href: '/#about', label: '氷雨会とは' },
+    { href: '/handball', label: 'ハンドボール' },
+    { href: '/esports', label: 'eスポーツ' },
+    { href: '/#contact', label: 'お問い合わせ' },
+  ]
+
   return (
     <>
-      <header>
-        <h1 id="logo">
-          <Link href="/">
-            <img src="/images/logo.png" alt="氷雨会" />
+      {/* Desktop Header */}
+      <header className="fixed top-0 left-0 right-0 z-40 bg-black/90 backdrop-blur-md border-b border-gray-800">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <Link href="/" className="text-2xl font-black text-white hover:text-cyan-400 transition-colors">
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              HISAME-KAI
+            </span>
           </Link>
-        </h1>
 
-        <nav>
-          <ul>
-            <li><Link href="/#about">氷雨会とは</Link></li>
-            <li><Link href="/handball">ハンドボール</Link></li>
-            <li><Link href="/esports">eスポーツ</Link></li>
-            <li><Link href="/#contact">お問い合わせ</Link></li>
-          </ul>
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:block" role="navigation" aria-label="メインナビゲーション">
+            <ul className="flex items-center gap-8">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-white hover:text-cyan-400 transition-colors font-semibold"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={handleMenuToggle}
+            className="md:hidden w-10 h-10 flex items-center justify-center text-white hover:text-cyan-400 transition-colors"
+            aria-label={menuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+          >
+            {menuOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
+          </button>
+        </div>
       </header>
 
-      {/* ハンバーガーメニューボタン */}
+      {/* Mobile Menu Overlay */}
       <div
-        id="menubar_hdr"
-        className={menuOpen ? 'ham' : ''}
-        onClick={handleMenuToggle}
+        id="mobile-menu"
+        className={`fixed inset-0 z-50 md:hidden transition-all duration-300 ${
+          menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
       >
-        <span></span><span></span><span></span>
-      </div>
+        <div className="absolute inset-0 bg-black/95 backdrop-blur-lg" onClick={handleLinkClick} />
 
-      {/* モバイルメニュー */}
-      <div id="menubar" className={menuOpen ? '' : 'display-none'}>
-        <p className="logo">
-          <img src="/images/logo.png" alt="氷雨会" />
-        </p>
+        <div className="relative h-full flex flex-col">
+          {/* Mobile Menu Header */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800">
+            <Link
+              href="/"
+              onClick={handleLinkClick}
+              className="text-2xl font-black text-white hover:text-cyan-400 transition-colors"
+            >
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                HISAME-KAI
+              </span>
+            </Link>
 
-        <nav>
-          <ul>
-            <li><Link href="/" onClick={handleLinkClick}>ホーム</Link></li>
-            <li><Link href="/#about" onClick={handleLinkClick}>氷雨会とは</Link></li>
-            <li><Link href="/handball" onClick={handleLinkClick}>ハンドボール</Link></li>
-            <li><Link href="/esports" onClick={handleLinkClick}>eスポーツ</Link></li>
-            <li><Link href="/#contact" onClick={handleLinkClick}>お問い合わせ</Link></li>
-          </ul>
-        </nav>
+            <button
+              onClick={handleMenuToggle}
+              className="w-10 h-10 flex items-center justify-center text-white hover:text-cyan-400 transition-colors"
+              aria-label="メニューを閉じる"
+            >
+              <FaTimes className="text-2xl" />
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          <nav className="flex-1 overflow-y-auto px-6 py-8" role="navigation" aria-label="モバイルメニュー">
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/"
+                  onClick={handleLinkClick}
+                  className="block px-6 py-4 text-xl font-semibold text-white hover:text-cyan-400 hover:bg-white/5 rounded-xl transition-all"
+                >
+                  ホーム
+                </Link>
+              </li>
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={handleLinkClick}
+                    className="block px-6 py-4 text-xl font-semibold text-white hover:text-cyan-400 hover:bg-white/5 rounded-xl transition-all"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
     </>
   )
