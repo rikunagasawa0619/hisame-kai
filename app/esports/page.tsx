@@ -183,13 +183,9 @@ export default function EsportsPage() {
             </div>
 
             <div className="mt-12">
-              <Link
-                href="#"
-                className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all"
-              >
-                <FaDiscord />
-                公式Discordをフォロー
-              </Link>
+              <p className="text-gray-500 text-sm">
+                Discord サーバーは招待制のため、公開リンクはございません
+              </p>
             </div>
           </motion.div>
         </div>
