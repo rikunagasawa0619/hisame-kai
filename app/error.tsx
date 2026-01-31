@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
-import { FaHome, FaRotateRight } from 'react-icons/fa6'
+import { FaHouse, FaRotateRight } from 'react-icons/fa6'
 
 export default function Error({
   error,
@@ -44,7 +44,7 @@ export default function Error({
             href="/"
             className="inline-flex items-center gap-3 px-8 py-4 border-2 border-orange-400 text-orange-400 rounded-full font-bold text-lg hover:bg-orange-400 hover:text-white transition-all duration-300"
           >
-            <FaHome className="text-xl" />
+            <FaHouse className="text-xl" />
             トップページへ
           </Link>
         </div>

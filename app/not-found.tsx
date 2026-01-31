@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FaHome, FaHandFist, FaGamepad } from 'react-icons/fa6'
+import { FaHouse, FaHandFist, FaGamepad } from 'react-icons/fa6'
 
 export default function NotFound() {
   return (
@@ -22,7 +22,7 @@ export default function NotFound() {
             href="/"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300"
           >
-            <FaHome className="text-xl" />
+            <FaHouse className="text-xl" />
             トップページへ
           </Link>
           <Link

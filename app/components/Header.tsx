@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { FaBars, FaTimes } from 'react-icons/fa6'
+import { FaBars, FaXmark } from 'react-icons/fa6'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -69,7 +69,7 @@ export default function Header() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
           >
-            {menuOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
+            {menuOpen ? <FaXmark className="text-2xl" /> : <FaBars className="text-2xl" />}
           </button>
         </div>
       </header>
@@ -101,7 +101,7 @@ export default function Header() {
               className="w-10 h-10 flex items-center justify-center text-white hover:text-cyan-400 transition-colors"
               aria-label="メニューを閉じる"
             >
-              <FaTimes className="text-2xl" />
+              <FaXmark className="text-2xl" />
             </button>
           </div>
 
