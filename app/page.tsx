@@ -68,27 +68,31 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-cyan-900">
-          <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:50px_50px]" />
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-black/50 z-10" />
+          <Image
+            src="/images/hero-image.jpg"
+            alt="氷雨会"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-7xl mx-auto">
+        <div className="relative z-20 text-center px-6 max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight">
-              大人の青春を
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight drop-shadow-2xl">
+              大人も本気で青春する
               <br />
-              追いかけて。
+              Vtuber氷雨莉桜の
+              <br />
+              スポーツ＆エンタメコミュニティ
             </h1>
-            <p className="text-xl md:text-3xl lg:text-4xl text-cyan-100 mb-4 font-medium">
-              Vtuber 氷雨莉桜氏による
-            </p>
-            <p className="text-2xl md:text-4xl lg:text-5xl text-white mb-12 font-bold">
-              エンタメ活動の拠点
-            </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center mt-16">
               <Link
@@ -127,6 +131,39 @@ export default function Home() {
                 氷雨会とは
               </h2>
               <p className="text-cyan-400 text-xl md:text-2xl uppercase tracking-wider">About HISAME-KAI</p>
+            </motion.div>
+
+            {/* Main Description with Illustration */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="grid md:grid-cols-2 gap-12 items-center mb-20"
+            >
+              <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-8 flex items-center justify-center">
+                <Image
+                  src="/images/rio-hisame-illustration.png"
+                  alt="氷雨莉桜"
+                  width={400}
+                  height={400}
+                  className="object-contain"
+                />
+              </div>
+
+              <div className="text-center md:text-left">
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                  Vtuberの氷雨莉桜が主催する、
+                  <br />
+                  エンタメサークル
+                </h3>
+                <p className="text-xl md:text-2xl text-cyan-400 font-bold mb-6">
+                  「大人も本気で青春する」
+                </p>
+                <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+                  を合言葉に楽しいことに飛びついていきます。
+                </p>
+              </div>
             </motion.div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -239,35 +276,47 @@ export default function Home() {
               <p className="text-cyan-400 text-xl md:text-2xl uppercase tracking-wider">Our Vision</p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="grid md:grid-cols-2 gap-12 items-center"
-            >
-              <div className="relative aspect-video md:aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <FaTrophy className="text-9xl text-gray-700" />
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <h4 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                  年齢や経験を問わず、
-                  <br />
-                  本気で青春を追いかける
-                </h4>
-                <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
-                  ハンドボールもeスポーツも、それぞれの形で仲間と繋がり、成長し、楽しむことができる環境を目指しています。オンラインとオフラインの両方で活動し、リアルな繋がりも大切にするコミュニティです。
-                </p>
-                <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
-                  私たちと一緒に、
-                  <strong className="text-cyan-400 font-bold">大人の青春</strong>
-                  を謳歌しませんか。
-                </p>
-              </div>
-            </motion.div>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: FaUsers,
+                  title: 'オフラインイベントの開催',
+                  description: 'オンラインだけでなく、リアルで顔を合わせる機会を大切にします。ハンドボールの試合観戦、eスポーツのオフ会、交流イベントなどを通じて、仲間との絆を深めます。',
+                  gradient: 'from-cyan-400 to-blue-500',
+                },
+                {
+                  icon: FaTrophy,
+                  title: 'ハンドボール社会人大会で優秀な成績を収める',
+                  description: '社会人チーム「REIGNITE」は、県リーグでの上位進出、全国大会出場を目指して日々練習に励んでいます。本気で勝利を目指すチームです。',
+                  gradient: 'from-orange-400 to-red-500',
+                },
+                {
+                  icon: FaHandFist,
+                  title: '中学生ハンドボールの環境を作る',
+                  description: '未来のハンドボール選手を育成するため、充実した練習環境と指導体制を整備します。基礎から丁寧に教え、全国大会出場を目指せる環境を提供します。',
+                  gradient: 'from-purple-400 to-pink-500',
+                },
+              ].map((vision, index) => (
+                <motion.div
+                  key={vision.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="p-8 md:p-10 rounded-3xl bg-gradient-to-br from-gray-900 to-black border-2 border-gray-800 hover:border-gray-700 transition-all duration-300"
+                >
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${vision.gradient} flex items-center justify-center mb-6`}>
+                    <vision.icon className="text-3xl text-white" />
+                  </div>
+                  <h4 className="text-xl md:text-2xl font-bold text-white mb-4">
+                    {vision.title}
+                  </h4>
+                  <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                    {vision.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -341,43 +390,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section className="py-24 md:py-32 px-6 bg-gradient-to-b from-black to-gray-900" id="contact">
-          <div className="container mx-auto max-w-5xl">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative rounded-3xl overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-600 via-blue-700 to-purple-800">
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:30px_30px]" />
-              </div>
-
-              <div className="relative p-12 md:p-16 text-center">
-                <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  お問い合わせ
-                </h3>
-                <p className="text-xl text-cyan-100 mb-4 leading-relaxed">
-                  各活動の詳細や参加方法について、
-                  <br className="hidden sm:block" />
-                  お気軽にお問い合わせください。
-                </p>
-                <p className="text-lg text-cyan-100 mb-10">
-                  体験練習や見学も随時受け付けております。
-                </p>
-                <a
-                  href="mailto:rikunagasawa0619@gmail.com"
-                  className="inline-flex items-center gap-3 px-10 py-5 bg-white text-blue-900 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-white/50 transition-all duration-300"
-                >
-                  <FaEnvelope className="text-2xl" />
-                  お問い合わせ
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </section>
       </main>
 
       {/* Page Top Button */}
